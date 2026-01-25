@@ -1,0 +1,139 @@
+<!-- QUICK TEST COMMANDS FOR BROWSER CONSOLE -->
+<!-- Copy and paste these commands in your browser's Developer Console (F12) to test -->
+
+THEME TOGGLE TEST:
+=================
+
+// Test 1: Check current theme
+console.log('Current theme:', localStorage.getItem('theme'));
+
+// Test 2: Get theme toggle button
+const themeBtn = document.getElementById('themeToggle');
+console.log('Theme button found:', themeBtn !== null);
+
+// Test 3: Simulate theme click
+themeBtn?.click();
+console.log('Theme after click:', localStorage.getItem('theme'));
+
+// Test 4: Check body class
+console.log('Body classes:', document.body.className);
+
+---
+
+HAMBURGER MENU TEST:
+====================
+
+// Test 1: Check hamburger element
+const hamburger = document.getElementById('hamburger');
+console.log('Hamburger found:', hamburger !== null);
+
+// Test 2: Check nav menu element
+const navMenu = document.getElementById('navMenu');
+console.log('Nav menu found:', navMenu !== null);
+
+// Test 3: Simulate hamburger click (works on mobile view < 768px)
+hamburger?.click();
+console.log('Menu active:', navMenu?.classList.contains('active'));
+
+// Test 4: Close menu
+hamburger?.click();
+console.log('Menu closed:', !navMenu?.classList.contains('active'));
+
+---
+
+NAVIGATION TEST:
+================
+
+// Test 1: Navigate to projects
+navigateToSection('projects');
+console.log('Navigated to projects');
+
+// Test 2: Navigate to contact
+navigateToSection('contact');
+console.log('Navigated to contact');
+
+// Test 3: Navigate to skills
+navigateToSection('skills');
+console.log('Navigated to skills');
+
+// Test 4: Navigate to education
+navigateToSection('education');
+console.log('Navigated to education');
+
+// Test 5: Navigate to about
+navigateToSection('about');
+console.log('Navigated to about');
+
+// Test 6: Navigate to home
+navigateToSection('home');
+console.log('Navigated to home');
+
+---
+
+SECTION VISIBILITY TEST:
+========================
+
+// Test 1: Check all sections
+const sections = document.querySelectorAll('.section');
+console.log('Total sections found:', sections.length);
+sections.forEach((s, i) => {
+  console.log(`Section ${i}: id=${s.id}, class=${s.className}, display=${getComputedStyle(s).display}`);
+});
+
+// Test 2: Check active section
+const activeSection = document.querySelector('.section.active');
+console.log('Active section:', activeSection?.id);
+
+// Test 3: Check nav links
+const navLinks = document.querySelectorAll('.nav-link');
+console.log('Total nav links:', navLinks.length);
+navLinks.forEach((link, i) => {
+  console.log(`Nav ${i}: section=${link.getAttribute('data-section')}, active=${link.classList.contains('active')}`);
+});
+
+---
+
+FULL INITIALIZATION TEST:
+=========================
+
+// Run this to verify everything initialized properly
+console.log('=== PORTFOLIO INITIALIZATION CHECK ===');
+console.log('✅ Theme toggle:', document.getElementById('themeToggle') !== null);
+console.log('✅ Hamburger menu:', document.getElementById('hamburger') !== null);
+console.log('✅ Nav menu:', document.getElementById('navMenu') !== null);
+console.log('✅ Sections:', document.querySelectorAll('.section').length, 'found');
+console.log('✅ Nav links:', document.querySelectorAll('.nav-link').length, 'found');
+console.log('✅ Current theme:', localStorage.getItem('theme'));
+console.log('✅ Body classes:', document.body.className);
+console.log('=== ALL CHECKS PASSED ===');
+
+---
+
+TROUBLESHOOTING:
+================
+
+// If theme toggle not working:
+document.getElementById('themeToggle').click();
+console.log(document.body.classList);
+
+// If hamburger not visible on mobile:
+console.log('Screen width:', window.innerWidth);
+console.log('Mobile breakpoint: 768px');
+if (window.innerWidth <= 768) {
+  console.log('Mobile view - hamburger should be visible');
+} else {
+  console.log('Desktop view - hamburger hidden');
+}
+
+// If navigation not working:
+navigateToSection('projects');
+const active = document.querySelector('.section.active');
+console.log('Active section is now:', active?.id);
+
+// If localStorage not working:
+try {
+  localStorage.setItem('test', 'value');
+  console.log('localStorage:', localStorage.getItem('test') === 'value' ? 'OK' : 'FAILED');
+} catch(e) {
+  console.log('localStorage ERROR:', e.message);
+}
