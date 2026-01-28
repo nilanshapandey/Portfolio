@@ -225,6 +225,10 @@ This portfolio is a great example of:
 ---
 
 **Made with ❤️ Nilansha Pandey**
+⚠️ NOTE:
+This portfolio is publicly visible for demonstration purposes only.
+Unauthorized copying or reuse of the code is strictly prohibited.
+
 
 Happy coding! 🚀
 "# Portfolio" 
