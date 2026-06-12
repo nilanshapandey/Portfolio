@@ -1,4 +1,20 @@
 
+  /* ─── NAV ACTIVE LINK DETECTION ─── */
+  (function setNavActiveLink() {
+    const currentPath = window.location.pathname;
+    const pageName = currentPath.substring(currentPath.lastIndexOf('/') + 1) || 'index.html';
+    document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === pageName || (pageName === 'index.html' && href === '#') || (href === 'index.html' && pageName === '')) {
+        link.setAttribute('aria-current', 'page');
+        link.classList.add('active');
+      } else {
+        link.removeAttribute('aria-current');
+        link.classList.remove('active');
+      }
+    });
+  })();
+
   /* ─── NAVBAR SCROLL ─── */
   const navbar = document.getElementById('navbar');
   if (navbar) {
